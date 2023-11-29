@@ -18,7 +18,6 @@ class Game {
     this.sizeGame = sizeGame;
     this.sizeContainer =
       this.sizeItem * this.sizeGame + this.spacing * (this.sizeGame + 1);
-    this.preArr2D = [];
     this.arr2D = [];
     this.arrZero = [];
     // color
@@ -249,7 +248,7 @@ class Game {
     if (this.gameOver) this.drawGameOver(200, 100);
 
     // https://stackoverflow.com/questions/49197700/es6-class-this-in-callback-of-requestanimationframe
-    requestAnimationFrame(this.drawGame.bind(this));
+    // requestAnimationFrame(this.drawGame.bind(this));
   }
 
   getAllItemHaveZeroValue() {
@@ -290,10 +289,6 @@ class Game {
       console.log(error);
       this.gameOver = true;
     }
-    // if (index1) {
-    // } else {
-    //   this.drawGameOver(200, 100);
-    // }
   }
 
   startGame() {
@@ -332,7 +327,7 @@ class Game {
     converArrRowToCol.forEach((row, index) => {
       const arrCalculated = row
         .map((item, indexRow) => {
-          if (indexRow === row.length) {
+          if (indexRow === row.length - 1) {
             return item;
           } else if (row[indexRow] === row[indexRow + 1]) {
             row[indexRow] = row[indexRow] + row[indexRow + 1];
@@ -422,6 +417,7 @@ class Game {
       // this.drawGame();
 
       // this.logTableArr2D();
+      requestAnimationFrame(this.drawGame.bind(this));
     });
   }
 
