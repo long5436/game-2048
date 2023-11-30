@@ -608,5 +608,5 @@ class Game {
 const game = new Game(ctx, 4, innerWidth, innerHeight);
 
 game.startGame();
-game.testMode();
+// game.testMode();
 game.addClick(canvas);
